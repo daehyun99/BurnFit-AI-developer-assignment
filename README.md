@@ -13,7 +13,7 @@
 
 
 ## 마일스톤
-![milesthone](https://github.com/daehyun99/BurnFit-AI-developer-assignment/images/milesthone.PNG)
+![milesthone](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/images/milesthone.PNG)
 
 # 모델 정보 및 학습 요약
 
