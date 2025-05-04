@@ -1,3 +1,10 @@
+## 빠른 실행
+```sh
+pip install -r requirements.txt
+
+uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
+```
+
 # 프로젝트 개요
 - [BurnFit] AI 개발자 과제
 - 프로젝트 명
