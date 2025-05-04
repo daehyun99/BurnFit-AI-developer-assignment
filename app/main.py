@@ -4,8 +4,6 @@ from fastapi import FastAPI
 from app.routes import API
 
 
-
-
 def create_app():
     """
     앱 함수 실행
