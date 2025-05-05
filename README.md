@@ -1,10 +1,3 @@
-## 빠른 실행
-```sh
-pip install -r requirements.txt
-
-uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
-```
-
 # 프로젝트 개요
 - [BurnFit] AI 개발자 과제
 - 프로젝트 명
@@ -136,6 +129,7 @@ graph LR
     - 경량화
 
 # 실행 방법
+- [setup](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/docs/setup.md)
 
 # 사용한 라이브러리 및 환경 정보
 - 프로그래밍 언어
