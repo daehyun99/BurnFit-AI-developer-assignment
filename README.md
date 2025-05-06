@@ -138,4 +138,5 @@ graph LR
     - FastAPI
     - LangChain
     - Hugging-Face
-
+    - Pandas
+    - Matplotlib
