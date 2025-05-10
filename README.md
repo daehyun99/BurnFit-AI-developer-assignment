@@ -59,7 +59,7 @@ graph LR
 - 학습 방식 : Lora
 
 # 실행 방법
-- FastAPI 서버 실행: [Colab](https://colab.research.google.com/drive/136btY15Ar3C2Rj-S_1jGkjuMCO38nFDt?usp=sharing)
+- FastAPI 서버 실행: [Colab](https://colab.research.google.com/drive/136btY15Ar3C2Rj-S_1jGkjuMCO38nFDt?usp=sharing) (로컬 실행 시, `gemma`라이브러리에 의한 오류 발생)
 - Data 전처리 :
     - .env 파일 생성 및 입력
     ```sh
