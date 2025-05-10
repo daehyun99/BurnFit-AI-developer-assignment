@@ -1,132 +1,132 @@
 # 모델 학습
-### 모델 학습 요약
-```sh
- 본 모델(Gemma3-1B)은 Colab 환경에서 V2 TPU 8개를 활용하여 학습하였으며, gemma 3.0.2 라이브러리를 사용하였습니다. 학습 데이터는 kaggle의 파워리프팅 데이터셋과 teacher model인 GPT-4o-mini를 활용하여 제작하였습니다.
-# 모델 학습
- LoRA를 활용하여 학습하였으며, '531 프로그램 이해', '531 프로그램 루틴 추천'을 목표로 두 번의 학습을 하였습니다.
- 1차적으로 Feedback-in-the-loop 구조로 모델 학습을 수행했습니다. teacher modle을 활용하여 531 프로그램 정보 데이터를 생성한 후, 해당 데이터로 모델을 학습합니다. 학습된 모델을 teacher model이 평가하고, 학습이 더욱 잘 수행될 수 있도록 개선된 데이터를 생성합니다. 이 과정을 반복하여 모델 성능을 향상시킵니다.
- 2차적으로는 kaggle의 파워리프팅 대회 데이터셋과 teacher model을 활용하여, 531 프로그램 루틴 추천 데이터를 생성 및 모델 학습을 수행했습니다. 파워리프팅 대회 데이터셋을 활용하여, 실제 유저들의 신체 정보와 1RM 데이터 등을 확보하였습니다. 해당 데이터와 teacher model을 활용하여, 유저의 상황과 운동 목표에 따른 531 프로그램 루틴 추천 데이터를 생성합니다. 생성된 데이터로 모델 학습을 수행합니다.
-# 모델 평가
- 모델에게 531 프로그램 루틴 추천을 100회 요청한 후, 두 가지 방식으로 모델을 평가합니다. 
-    (1) 100회의 요청에 대한 20%의 답변을 사람이 직접 검수하여 모델의 정확도, 할루시네이션 여부 등을 판별합니다.
-    (2) 100회의 요청에 대한 모든 답변을 teacher model(GPT-4o-mini)이 평가하여 모델의 정확도, 할루시네이션 여부 등을 판별합니다.
-# 모델 학습 비용
-모델 학습을 위한 데이터 생성 과정에서 X만큼
-모델 학습 과정에서 비용 X만큼
-모델 평가 과정에서 X만큼
-# 결론
-
-
-```
-
-- 모델 정보 : Gemma3-1B
-    - 모델 선정 사유 :
-        - 다양한 언어 지원
-        - 경량화    
-- 학습 환경 : Colab(V2 TPU 8개)
-- 학습 설정 :
-    - Lora fine-tuning1
-        - Batch Size : 8
-        - Epochs : 300
-        - Learning Rate :
-        - Optimizer :
-    - Lora fine-tuning2
-        - Batch Size : 8
-        - Epochs : 300
-        - Learning Rate :
-        - Optimizer :
-
-## 모델 학습
-### Lora fine-tuning1
-```mermaid
-graph LR
-  A(소수 seed 프롬프트) --> B(teacher LLM)
-  B --> |531 프로그램 정보 데이터| C(Gemma3-1B LoRA fine-tune)
-```
-- 목표 : 모델에게 531 프로그램에 대하여 학습시킨다.
-0. teacher LLM을 활용하여, 531 운동 프로그램 학습용 데이터 생성 : `00_generate_training_data_with_llm(GPT-4o-mini).ipynb`
-0. teacher LLM을 활용하여, `Gemma3-1B`모델 학습 및 평가용 데이터 생성 : [01_training-generate_eval_data.ipynb (Colab 링크)](https://colab.research.google.com/drive/1ytDXXEpQELN29wcKBOxL4jgsN9sIUQKy?usp=sharing)
-0. teacher 모델을 활용하여, 생성된 데이터 평가 및 개선된 학습 데이터 제시 : `02_eval-generate_data_with_llm(GPT-4o-mini).ipynb`
-0. (1 ~ 2 단계 5회 반복)
-
-### Lora fine-tuning2
-```mermaid
-graph LR
-  A(소수 seed 프롬프트 + 파워리프팅 데이터) --> |Few-shot| B(teacher LLM)
-  B --> |531 프로그램 루틴 추천 데이터| C(Gemma3-1B LoRA fine-tune)
-```
-- 목표 : 모델이 사용자의 입력에 대해 531 프로그램 루틴을 추천할 수 있게 한다.
-0. kaggle의 파워리프팅 데이터 수집 및 간단한 데이터 시각화 : `00_dataset_setup.ipynb`
-0. 데이터 전처리 수행 : `01_preprocess_data.ipynb`
-0. teacher LLM을 활용하여, 학습용 데이터 생성 : `02_generate_training_data_with_llm.ipynb`
-0. `Gemma3-1B`모델 학습 : [(Colab 링크)]()
-
-## 모델 평가
-- 평가 방식1 
-    - Gemma3-1B 모델의 출력 데이터 직접 검수(20%)
-        - 표본 갯수 : 100개
-        - 표본 비율 : 
-        - 표준 오차 : 
-        - 신뢰 구간 : 
-- 평가 방식2
-    - teacher LLM을 활용한, Gemma3-1B 모델의 출력 데이터 검수
-        - 표본 갯수 : 100개
-        - 표본 비율 : 
-        - 표준 오차 : 
-        - 신뢰 구간 : 
-
-## 모델 학습 비용 :
-- 모델 학습 및 평가를 위한 데이터 생성 (OpenAI API)
-    - OpenAI API input tokens : 
-    - OpenAI API output tokens : 
-- 모델 학습 (Colab)
-    - 연산 장비 : V2 TPU 8개
-    - 연산 비용 XX개
-
-- 모델 학습에 사용된 리소스 (시행착오 포함) :
-    - 모델 학습 및 평가를 위한 데이터 생성 (OpenAI API)
-        - OpenAI API input tokens : 
-        - OpenAI API output tokens : 
-    - 모델 학습 (Colab)
-        - 연산 장비 : V2 TPU 8개, A100 GPU
-        - 연산 비용 XX개
-
-# 결론
-
+## 1. 학습 환경
+- 모델: `Gemma3-1B`
+- 환경: Google Colab, V2 TPU 8개 사용
+- 라이브러리: `gemma 3.0.2`
+- 데이터 출처:
+    - Kaggle의 파워리프팅 데이터셋
+    - Teacher Model: `GPT-4o-mini`를 활용해 학습용 데이터 생성
 
 ---
 
-## 시행착오 내용
-- 시도1
-    - seed 프롬프트 생성
-    - 파워리프팅 데이터로 teacher model이 생성한 데이터로 모델 학습
-- 문제점 1: 답변이 구조적이지 못함. (주차가 계속 반복되는 문제 발생) `### 1주차: ....(무한 반복)`
-- 문제점2 : Gemma3-1B 모델의 경우, 답변의 부정확도가 높음. Gemma3-4B 모델의 경우, 답변의 정확도가 향상되지만, 모델 크기 제한사항에 맞지 않음.
-- 문제점3 : Gemma3 기술문서 참고 -> small teacher 모델로 부터 지식 증류는 받는 것이 더 낫다는 주장.
-- 해결 방법
-  - 작은 teacher 모델로 Sambanova Cloud의 Llama모델을 선정한다.
+## 2. 모델 학습 과정
+### 2-1. 531 프로그램 이해를 위한 학습
+```mermaid
+graph LR
+  A["teacher model<br>(데이터 생성)"] --> B["Gemma3-1B<br>(LoRA fine-tune)"]
+  B --> C["teacher model<br>(모델 평가)"]
+  C --> D["teacher model<br>(개선된 데이터 생성)"]
+  D -.-> |Feedback-in-the-loop| B
+```
+- **학습 방식**: LoRA 기반 지도학습
+- **목표**: 531 프로그램에 대한 설명 및 이해 능력 향상
+- **데이터**:
+    1. Teacher model을 활용한 531 프로그램 정보 데이터 생성
+- **세부 학습 방식**:
+    1. Teacher model(GPT-4o-mini)을 활용해 531 프로그램 관련 설명 데이터 생성 (관련 코드 : [[1]](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/v0.3.0/data/01-01_generate_training_data_with_llm(GPT-4o-mini).ipynb))
+    2. 해당 데이터로 Gemma3-1B 모델 지도학습 (관련 코드 : [[2 - Colab]](https://colab.research.google.com/drive/1ytDXXEpQELN29wcKBOxL4jgsN9sIUQKy?usp=sharing))
+    3. 학습된 모델의 응답을 다시 teacher model이 평가 (관련 코드 : [[3]](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/v0.3.0/data/01-03_eval-generate_data_with_llm(GPT-4o-mini).ipynb))
+    4. 평가 결과를 바탕으로 데이터 개선 → 재학습 (Feedback-in-the-loop 반복)
 
-- 시도2
-    - 위키피디아, 나무위키 데이터로 모델 학습
-- 531 운동 프로그램에 대하여, 학습을 하지 않은 경우, 할루시네이션 답변 발생 `<input>531 by jim wendler에 대해서 설명해줘. -> <output>Jim Wendler의 "531"은 다양한 게임, 특히 RPG (Role-Playing ....`
+### 2-2. 531 프로그램 루틴 추천을 위한 학습
+```mermaid
+graph LR
+  A["Kaggle 파워리프팅 데이터<br>(학습용)"] --> |데이터 전처리| B["teacher model<br>(데이터 생성)"]
+  B --> C["Gemma3-1B<br>(LoRA fine-tune)"]
+```
+- **학습 방식**: LoRA 기반 지도학습
+- **목표**: 사용자 상황과 운동 목표에 따라 맞춤형 531 루틴을 추천하는 능력 학습
+- **데이터**:
+    1. Kaggle 파워리프팅 대회 데이터셋
+    2. Teacher model을 활용한 개인 맞춤형 루틴 추천 데이터 생성
+- **세부 학습 방식**:
+    1. Kaggle 파워리프팅 대회 데이터셋을 기반으로 실제 유저의 신체 정보 및 1RM 데이터 확보 (관련 코드 : [[4]](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/v0.3.0/data/02-01_dataset_setup.ipynb))
+    2. 데이터 전처리 및 Teacher model(GPT-4o-mini)을 활용해 531 프로그램 루틴 추천 데이터 생성 (관련 코드 : [[5]](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/v0.3.0/data/02-02_preprocess_data.ipynb), [[6]](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/v0.3.0/data/02-03_generate_training_data_with_llm.ipynb))
+    3. 해당 데이터로 Gemma3-1B 모델 지도학습 (관련 코드 : [[7 - Colab]](https://colab.research.google.com/drive/1NR4BajMfUWV6vHn2MpKIibAY1WYygV30?usp=sharing))
+    4. 최종 평가는 하단의 `모델 평가` 참고
 
-- 해결 방법
-    - 위키피디아, 나무위키로 파워리프팅, 웨이트 트레이닝 도메인 데이터 수집 및 모델 학습
-- 문제점1 : 나무위키, 위키피디아의 설명하는 말투를 그대로 사용.
-- 문제점2 : 학습 데이터 수집에 어려움이 있음. (저작권, 데이터의 갯수 부족)
+---
 
+## 3. 모델 평가
+### 3-1. 평가 방법
+```mermaid
+graph LR
+A["Kaggle 파워리프팅 데이터<br>(평가용)"] --> |데이터 전처리| B["teacher model<br>(데이터 생성)"]
+B --> C["Gemma3-1B<br>(답변 생성)"]
+C --> |임의의 20% 데이터| D["사람 검수 평가"]
+C --> |100% 데이터| E["teacher model"]
+```
+1. Kaggle 파워리프팅 대회 데이터셋을 기반으로 실제 유저의 신체 정보 및 1RM 데이터 확보(학습데이터와 중복 되지 않은) (관련 코드 : [[4]](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/v0.3.0/data/02-01_dataset_setup.ipynb))
+2. 데이터 전처리 및 Teacher model(GPT-4o-mini)을 활용해 531 프로그램 루틴 추천 평가용 데이터 생성 (관련 코드 : [[5]](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/v0.3.0/data/02-02_preprocess_data.ipynb))
+3. 해당 데이터로 Gemma3-1B 모델에게 100회의 531 프로그램 루틴 추천 요청 (관련 코드 : [[8 - Colab]](https://colab.research.google.com/drive/1CJzB0g9eRnLYahi0-15_mzICXJkZH0Ao?usp=sharing))
+    - **사람 검수 평가**  
+        1. 총 100회 루틴 추천 요청 중 20%에 대해 사람이 직접 정성 검토 (관련 코드 : [[9]](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/v0.3.0/data/03-02_eval-final-model-data_with_llm(GPT-4o-mini).ipynb))
+        2. 평가 기준에 따라 수동 평가 수행
+    - **Teacher 모델 평가**  
+        1. 전체 100개 응답을 GPT-4o-mini가 평가 (관련 코드 : [[9]](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/v0.3.0/data/03-02_eval-final-model-data_with_llm(GPT-4o-mini).ipynb))
+        2. 평가 기준에 따라 자동화된 평가 수행
 
-- 시도3
-    - teacher model로 531 운동 프로그램에 대한 지도학습 데이터 생성
-    - 해당 데이터로 학습
-    - teacher model을 활용한 모델 평가
-- 문제점1 : 데이터 생성 비용
-- 문제점2 : 모델의 답변 형식이 운동 루틴을 추천하는 것이 아닌, 531 운동 프로그램에 대하여 설명형식임.
+### 3-2. 평가 기준
+- 모델의 답변에 대한 5가지 항목 중에서 3개 이상의 항목이 적절하다고 판단하면, "적절"로 분류합니다.
+- 5가지 항목
+    1. 모델이 제시한 각 주차 별 스쿼트 중량이 실제 중량의 10% 오차 범위 이내인 경우, "적절"로 분류합니다.
+    2. 모델이 제시한 각 주차 별 밀리터리프레스 중량이 실제 중량의 10% 오차 범위 이내인 경우, "적절"로 분류합니다.
+    3. 모델이 제시한 각 주차 별 벤치프레스 중량이 실제 중량의 10% 오차 범위 이내인 경우, "적절"로 분류합니다.
+    4. 모델이 제시한 각 주차 별 데드리프트 중량이 실제 중량의 10% 오차 범위 이내인 경우, "적절"로 분류합니다.
+    5. 사용자에게 총 4주의 531 프로그램 루틴을 추천하였다면 "적절"로 분류합니다.
 
-- 시도4
-    - 시도1 + 시도3
-    - 시도3으로 531 운동 프로그램에 대하여 모델 학습 수행
-    - 시도1의 teacher model로 지도학습 데이터 생성(프롬프트 엔지니어링을 활용하여, 할루시네여션 감소, COT 적용(?) - TM 계산 과정 명시)
-    - 학습된 모델에 생성한 데이터로 모델 학습 수행
-    - 답변이 일정 형식을 띔(과적합). 하지만, 루틴 추천에만 사용하는 모델이라면, 문제가 없을 것으로 예상
+### 3-3. 평가 결과
 
+| 평가 방법 | 적절 | 부적절 |
+| --- | --- | --- |
+| 사람 검수 평가(본인) | 16 | 4 |
+| Teacher model 평가 | 61 | 39 |
+
+---
+
+## 4. 모델 학습 비용
+
+| 비용 | OpenAI API input tokens($) | OpenAI API output tokens($원$) | Colab 컴퓨팅 단위($) | 합계($) |
+| --- | --- | --- | --- | --- |
+| 총 비용 | 1,961,116($0.29) | 2,535,694($1.52) | 5.96($0.59) | $2.4 |
+
+### 2-1. 531 프로그램 이해를 위한 학습
+- **OpenAI API**
+    1. OpenAI API requests : 240회
+    2. OpenAI API input tokens : 174,003
+    3. OpenAI API output tokens : 66,200
+- **Colab**
+    1. Colab 컴퓨팅 단위 : 2.5 소모
+
+### 2-2. 531 프로그램 루틴 추천을 위한 학습
+- **OpenAI API**
+    1. OpenAI API requests : 1,005회
+    2. OpenAI API input tokens : 1,323,165
+    3. OpenAI API output tokens : 910,483
+- **Colab**
+    1. Colab 컴퓨팅 단위 : 2.75 소모
+
+### 3. 모델 평가
+- **OpenAI API**
+    1. OpenAI API requests : 231회
+    2. OpenAI API input tokens : 463,948
+    3. OpenAI API output tokens : 61,843
+- **Colab**
+    1. Colab 컴퓨팅 단위 : 0.71 소모
+
+- > OpenAI API input tokens : Price per 1M tokens $0.15
+- > OpenAI API output tokens : Price per 1M tokens $0.60
+- > Colab : 100 컴퓨팅 단위 당 $9.99 기준
+
+---
+
+## 5. 결론 및 활용 방안
+- **결론**
+    1. 데이터 생성 및 평가 과정에서 Teacher model을 활용하여 자동화된 시스템을 도입할 수 있습니다.
+    2. 모델이 `531 프로그램 루틴 추천`만 수행한다면, 1B 모델으로도 충분할 것 같습니다.
+    3. Teacher model이 생성하는 데이터의 품질을 향상시킨다면, 유저들에게 개인화된 531 프로그램 루틴 추천을 할 수 있을 것 같습니다.
+
+- **활용 방안(서비스화 전략)**:
+    1. 초기 : `OpenAI API` + `프롬프트 엔지니어링`을 활용하여, 531 프로그램 루틴 추천 서비스 PoC 도입
+    2. 중기 : 서비스를 운영하며 수집된 정보를 바탕으로 데이터셋 구성 및 축적
+    3. 장기 : 경량화된 모델(Gemma3-1B 등)을 파인튜닝하여 운영 비용 절감 기대
