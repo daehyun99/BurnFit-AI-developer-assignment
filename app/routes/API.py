@@ -67,5 +67,5 @@ def api(user_input: str):
     
     # ================================================
     # 5. 답변 출력
-    return result
+    return {"output": result}
     

@@ -1,11 +1,4 @@
 - [모델 학습 설명서](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/docs/model_training.md) (/docs/model_training.md)
-### 모델 학습 요약
-```sh
- 본 모델(Gemma3-1B)은 Colab 환경에서 V2 TPU 8개를 활용하여 학습하였으며, gemma 3.0.2 라이브러리를 사용하였습니다. 학습 데이터는 kaggle의 파워리프팅 데이터셋과 teacher model인 GPT-4o-mini를 활용하여 제작하였습니다.
-# 모델 학습
- LoRA를 활용하여 학습하였으며, 두 가지 방식으로 학습방식을 적용하였습니다.
- 1차적으로 Feedback-in-the-loop ...
-```
 
 # 프로젝트 개요
 - [BurnFit] AI 개발자 과제
@@ -29,7 +22,7 @@ graph LR
 - 사용자의 운동 경험, 목표, 1RM 기록 등을 바탕으로, 5/3/1 프로그램 기반의 맞춤형 운동 루틴을 생성하는 시스템을 설계하고 구현합니다.
 
 ## 마일스톤
-![milesthone](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/images/milesthone.PNG)
+![milesthone](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/images/milesthone1.PNG)
 
 ## 요구사항 분석
 ### 사용자 정의
@@ -47,22 +40,26 @@ graph LR
 - input
 ```py
 {
-    f"{instruction}", f"{input}"
+    "instruction": f"{instruction}",
+    "input": f"{input}"
 }
 ```
 
 - output
 ```py
 {
-    f"{output}"
+    "output": f"{output}"
 }
 ```
 
 # 모델 정보 및 학습 요약
-
+- [모델 학습 설명서](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/docs/model_training.md) (/docs/model_training.md)
+- 모델 정보 : Gemma3-1B
+- 연산 자원 : V2 TPU 8개
+- 학습 방식 : Lora
 
 # 실행 방법
-- FastAPI 서버 실행: [Colab]()
+- FastAPI 서버 실행: [Colab](https://colab.research.google.com/drive/136btY15Ar3C2Rj-S_1jGkjuMCO38nFDt?usp=sharing)
 - Data 전처리 :
     - .env 파일 생성 및 입력
     ```sh
