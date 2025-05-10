@@ -1,11 +1,8 @@
-from dotenv import load_dotenv
-from os import getenv, path, environ
+from os import path
+import os
 
 base_dir = path.dirname(path.dirname(path.dirname(path.abspath(__file__))))
 
-load_dotenv()
+os.environ["XLA_PYTHON_CLIENT_MEM_FRACTION"]="1.00"
 
-OPENAI_API_KEY = getenv("OPENAI_API_KEY")
-HUGGING_FACE_TOKEN = getenv("HUGGING_FACE_TOKEN")
-
-model_path = path.join(base_dir, "app", "models")
+model_path = ""
