@@ -40,7 +40,7 @@ graph LR
     1. Kaggle 파워리프팅 대회 데이터셋
     2. Teacher model을 활용한 개인 맞춤형 루틴 추천 데이터 생성
 - **세부 학습 방식**:
-    1. Kaggle 파워리프팅 대회 데이터셋을 기반으로 실제 유저의 신체 정보 및 1RM 데이터 확보 (관련 코드 : [[4]](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/v0.3.0/data/02-01_dataset_setup.ipynb))
+    1. Kaggle 파워리프팅 대회 데이터셋을 기반으로 실제 유저의 신체 정보 및 1RM 데이터 확보 및 데이터 시각화 (관련 코드 : [[4]](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/v0.3.0/data/02-01_dataset_setup.ipynb))
     2. 데이터 전처리 및 Teacher model(GPT-4o-mini)을 활용해 531 프로그램 루틴 추천 데이터 생성 (관련 코드 : [[5]](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/v0.3.0/data/02-02_preprocess_data.ipynb), [[6]](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/v0.3.0/data/02-03_generate_training_data_with_llm.ipynb))
     3. 해당 데이터로 Gemma3-1B 모델 지도학습 (관련 코드 : [[7 - Colab]](https://colab.research.google.com/drive/1NR4BajMfUWV6vHn2MpKIibAY1WYygV30?usp=sharing))
     4. 최종 평가는 하단의 `모델 평가` 참고
@@ -79,8 +79,8 @@ C --> |100% 데이터| E["teacher model"]
 
 | 평가 방법 | 적절 | 부적절 |
 | --- | --- | --- |
-| 사람 검수 평가(본인) | 16 | 4 |
-| Teacher model 평가 | 61 | 39 |
+| 사람 검수 평가<br>(본인) | 16 | 4 |
+| Teacher model 평가<br>(GPT-4o-mini) | 61 | 39 |
 
 ---
 
