@@ -1,7 +1,7 @@
 - [모델 학습 설명서](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/docs/model_training.md) (/docs/model_training.md)
 - [Gemma3-1B 파인튜닝 모델(구글 드라이브)](https://drive.google.com/drive/folders/1-42plqywNzfa0OqLdnm_9D1PsBCms7jj?usp=sharing)
-- [lora-training1](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/data/sample-dataset/lora-training1.json)
-- [lora-training2](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/data/sample-dataset/lora-training2.json)
+- [학습용 데이터 샘플 (lora-training1)](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/data/sample-dataset/lora-training1.json)
+- [학습용 데이터 샘플 (lora-training2)](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/data/sample-dataset/lora-training2.json)
 
 # 프로젝트 개요
 - [BurnFit] AI 개발자 과제
@@ -25,7 +25,7 @@ graph LR
 - 사용자의 운동 경험, 목표, 1RM 기록 등을 바탕으로, 5/3/1 프로그램 기반의 맞춤형 운동 루틴을 생성하는 시스템을 설계하고 구현합니다.
 
 ## 마일스톤
-![milesthone](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/images/milesthone1.PNG)
+![milesthone](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/images/milesthone2.PNG)
 
 ## 요구사항 분석
 ### 사용자 정의
@@ -110,7 +110,6 @@ graph LR
 - Docs : 문서 작성
 - Prompt : 프롬프트 개선
 - Data : 데이터 수집, 처리, 분석
-- Model : AI 모델 학습
 - Deploy : 배포 관련
 
 ---
