@@ -1,4 +1,7 @@
 - [모델 학습 설명서](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/docs/model_training.md) (/docs/model_training.md)
+- [Gemma3-1B 파인튜닝 모델(구글 드라이브)](https://drive.google.com/drive/folders/1-42plqywNzfa0OqLdnm_9D1PsBCms7jj?usp=sharing)
+- [lora-training1](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/data/dataset/lora-training1.json)
+- [lora-training2](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/data/dataset/lora-training2.json)
 
 # 프로젝트 개요
 - [BurnFit] AI 개발자 과제
