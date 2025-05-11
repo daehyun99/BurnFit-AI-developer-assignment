@@ -80,9 +80,9 @@ graph LR
     1. `Colab` 파일 복사
     2. Gemma3 모델 구글 드라이브에 업로드 필요 ([Gemma3-1B 파인튜닝 모델(구글 드라이브)](https://drive.google.com/drive/folders/1-42plqywNzfa0OqLdnm_9D1PsBCms7jj?usp=sharing))
     3. ngrok 토큰 입력 필요
-    4. `ngrok` 서버 접속 및 `docs/model_training.md`의 **3. 예시 사용자 루틴 생성**의 입력 데이터 활용
+    4. `ngrok` 서버 접속 및 `docs/model_training.md`의 [**3. 예시 사용자 루틴 생성**](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/docs/model_training.md#3-%EC%98%88%EC%8B%9C-%EC%82%AC%EC%9A%A9%EC%9E%90-%EB%A3%A8%ED%8B%B4-%EC%83%9D%EC%84%B1-%EA%B2%B0%EA%B3%BC)의 입력 데이터 활용
 - 🛑 로컬 실행 시, `gemma`라이브러리에서 오류 발생 -> Colab 환경 실행 필요
-### 예시 사용자 루틴 생성 결과
+### 사용자 루틴 생성 결과 (예시 이미지)
 - Request
 ![FastAPI-Request](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/images/FastAPI-Request.PNG)
 
