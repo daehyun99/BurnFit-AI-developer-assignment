@@ -21,7 +21,7 @@ graph LR
 - **학습 방식**: LoRA 기반 지도학습
 - **목표**: 531 프로그램에 대한 설명 및 이해 능력 향상
 - **데이터**:
-    1. Teacher model을 활용한 531 프로그램 정보 데이터 생성 ([lora-training1](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/data/dataset/lora-training1.json))
+    1. Teacher model을 활용한 531 프로그램 정보 데이터 생성 ([lora-training1](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/data/sample-dataset/lora-training1.json))
 - **세부 학습 방식**:
     1. Teacher model(GPT-4o-mini)을 활용해 531 프로그램 관련 설명 데이터 생성 (관련 코드 : [[1]](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/data/01-01_generate_training_data_with_llm(GPT-4o-mini).ipynb))
     2. 해당 데이터로 Gemma3-1B 모델 지도학습 (관련 코드 : [[2 - Colab]](https://colab.research.google.com/drive/1ytDXXEpQELN29wcKBOxL4jgsN9sIUQKy?usp=sharing))
@@ -38,7 +38,7 @@ graph LR
 - **목표**: 사용자 상황과 운동 목표에 따라 맞춤형 531 루틴을 추천하는 능력 학습
 - **데이터**:
     1. Kaggle 파워리프팅 대회 데이터셋
-    2. Teacher model을 활용한 개인 맞춤형 루틴 추천 데이터 생성 ([lora-training2](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/data/dataset/lora-training2.json))
+    2. Teacher model을 활용한 개인 맞춤형 루틴 추천 데이터 생성 ([lora-training2](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/data/sample-dataset/lora-training2.json))
 - **세부 학습 방식**:
     1. Kaggle 파워리프팅 대회 데이터셋을 기반으로 실제 유저의 신체 정보 및 1RM 데이터 확보 및 데이터 시각화 (관련 코드 : [[4]](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/data/02-01_dataset_setup.ipynb))
     2. 데이터 전처리 및 Teacher model(GPT-4o-mini)을 활용해 531 프로그램 루틴 추천 데이터 생성 (관련 코드 : [[5]](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/data/02-02_preprocess_data.ipynb), [[6]](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/data/02-03_generate_training_data_with_llm.ipynb))
