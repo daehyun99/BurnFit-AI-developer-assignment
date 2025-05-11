@@ -74,7 +74,7 @@ graph LR
 ## 3-1. FastAPI 서버 실행: [FastAPI (Colab)](https://colab.research.google.com/drive/136btY15Ar3C2Rj-S_1jGkjuMCO38nFDt?usp=sharing)
 - `Colab`환경에서 `ngrok` 서버 배포
     1. `Colab` 파일 복사
-    2. Gemma3 모델 구글 드라이브에 업로드 필요
+    2. Gemma3 모델 구글 드라이브에 업로드 필요 ([Gemma3-1B 파인튜닝 모델(구글 드라이브)](https://drive.google.com/drive/folders/1-42plqywNzfa0OqLdnm_9D1PsBCms7jj?usp=sharing))
     3. ngrok 토큰 입력 필요
     4. `ngrok` 서버 접속 및 `docs/model_training.md`의 **3. 예시 사용자 루틴 생성**의 입력 데이터 활용
 - 🛑 로컬 실행 시, `gemma`라이브러리에서 오류 발생 -> Colab 환경 실행 필요
