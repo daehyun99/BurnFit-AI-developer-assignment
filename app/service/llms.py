@@ -23,4 +23,4 @@ def load_Gemma3(model_path= GEMMA_MODEL_PATH):
     )
     return sampler
 
-sampler = load_Gemma3()
+sampler = load_Gemma3(model_path= GEMMA_MODEL_PATH)

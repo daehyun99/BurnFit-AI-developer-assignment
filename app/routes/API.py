@@ -20,14 +20,17 @@ def api(user_input: user_input):
         # ✅ 1-1. 사용자 입력
         # ✅ 1-2. 사용자 입력 검증
     try:
-        input = user_input.input
-        instruction = user_input.instruction
+        if user_input:
+            input = user_input.input
+            instruction = user_input.instruction
 
-        instruction = sanitize_input(instruction)
+            instruction = sanitize_input(instruction)
 
-        prompt = f"""{instruction} {input}"""
+            prompt = f"""{instruction} {input}"""
+        else:
+            return ["🛑 사용자 입력 오류 : User input is None"]
     except Exception as e:
-        return ["🛑 사용자 입력 오류 : ", e]
+        return ["🛑 사용자 입력 오류 : ", str(e)]
 
 
     # ================================================
@@ -35,9 +38,9 @@ def api(user_input: user_input):
     try:
         result = sampler.chat(prompt)
     except Exception as e:
-        return ["🛑 답변 생성 오류 : ", e]
+        return ["🛑 Gemma3 답변 생성 오류 : ", str(e)]
     
     # ================================================
     # 답변 출력
-    return {"output": result}
+    return {"output": str(result)}
     
