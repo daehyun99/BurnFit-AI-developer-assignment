@@ -1,4 +1,4 @@
-# Readme.md
+# README.md
 ### 주요 파일
 - [모델 학습 설명서](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/docs/model_training.md) (/docs/model_training.md)
 - [Gemma3-1B 파인튜닝 모델(구글 드라이브)](https://drive.google.com/drive/folders/1-42plqywNzfa0OqLdnm_9D1PsBCms7jj?usp=sharing)
@@ -7,8 +7,8 @@
 
 # 1. 프로젝트 개요
 - [BurnFit] AI 개발자 과제
-- 프로젝트 명
-    - LLM 기반 5/3/1 운동 루틴 추천 시스템
+- 프로젝트명 : LLM 기반 5/3/1 운동 루틴 추천 시스템
+- 프로젝트 수행 기간 : 2025-05-03 ~ 2025-05-12
 ```mermaid
 graph LR
     subgraph 입력
@@ -38,8 +38,8 @@ graph LR
     }
     ```
 
-## 1-1. 프로젝트 간트차트
-![milesthone](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/images/milesthone2.PNG)
+## 1-1. 프로젝트 관리 (Gantt chart)
+![Gantt chart](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/images/milesthone2.PNG)
 
 ## 1-2. 목표
 - 사용자의 운동 경험, 목표, 1RM 기록 등을 바탕으로, 5/3/1 프로그램 기반의 맞춤형 운동 루틴을 생성하는 시스템을 설계하고 구현합니다.
@@ -68,7 +68,11 @@ graph LR
     - 반복/세트/중량 계산 방식 반영 여부
         1. 모델의 답변 생성 간에, CoT(Chain of Thought)방식을 활용하였습니다.
             - 사용자의 1RM에 대한 TM을 계산 후, 각 주차별 중량을 계산하여 정확도 향상
-- 비용(데이터 생성 + 모델 학습 및 평가) : $2.4
+- 비용(데이터 생성 + 모델 학습 및 평가)
+
+    | 비용 | OpenAI API input tokens($) | OpenAI API output tokens($) | Colab 컴퓨팅 단위($) | 합계($) |
+    | --- | --- | --- | --- | --- |
+    | 데이터 생성 + 모델 학습 및 평가 | 1,961,116($0.29) | 2,535,694($1.52) | 5.96($0.59) | $2.4 |
 
 # 3. 실행 방법
 ## 3-1. FastAPI 서버 실행: [FastAPI (Colab)](https://colab.research.google.com/drive/136btY15Ar3C2Rj-S_1jGkjuMCO38nFDt?usp=sharing)
@@ -85,7 +89,7 @@ graph LR
 - Response
 ![FastAPI-Response](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/images/FastAPI-Response.PNG)
 
-## 3-2. Data 전처리 : (/data/)
+## 3-2. Data 전처리 : (/data/[File-Name].ipynb)
 - .env 파일 생성 및 입력
 ```sh
 OPENAI_API_KEY=""
@@ -105,9 +109,9 @@ pip install pandas openai scikit-learn matplotlib python-dotenv
 - 개발 환경
     - 데이터 전처리 및 모델 학습
         - Colab
-        - Local
-    - FastAPI-server
-        - Local
+        - Local : Windows 10
+    - FastAPI
+        - Local : Windows 10
     - 배포
         - Colab + ngrok
     
