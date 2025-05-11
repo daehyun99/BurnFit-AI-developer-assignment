@@ -1,35 +1,25 @@
-from transformers import AutoTokenizer, Gemma3ForCausalLM
-from transformers import AlbertTokenizer, AlbertForMaskedLM
-import torch
+from kauldron import kd
+from gemma import gm
+from gemma import peft
 
-from app.common.config import HUGGING_FACE_TOKEN
 
-from huggingface_hub import login
-
-login(f"{HUGGING_FACE_TOKEN}")
-
-def load_Gemma3():
+def load_Gemma3(path = "/content/drive/MyDrive/05_[공유파일]/Burnfit-model/Gemma3-lora6"):
     """
+    path 
+    """
+    model = gm.nn.LoRA(
+        rank=4,
+        model=gm.nn.Gemma3_1B(tokens="batch.input"),
+    )
+    params = gm.ckpts.load_params(path)
     
-    """
-    model_id = "google/gemma-3-1b-it"
-    tokenizer = AutoTokenizer.from_pretrained(model_id)
-    model = Gemma3ForCausalLM.from_pretrained(
-        model_id,
-        torch_dtype=torch.bfloat16,
-        # device_map="auto",
-        )
-    return model, tokenizer
+    tokenizer = gm.text.Gemma3Tokenizer()
 
-def load_ALBert():
-    """
-    
-    """
-    model_id = "albert-base-v2"
-    tokenizer = AlbertTokenizer.from_pretrained(model_id)
-    model = AlbertForMaskedLM.from_pretrained(
-        model_id,
-        torch_dtype=torch.bfloat16,
-        # device_map="auto",
-        )
-    return model, tokenizer
+    sampler = gm.text.ChatSampler(
+        model=model,
+        params=params,
+        tokenizer=tokenizer
+    )
+    return sampler
+
+sampler = load_Gemma3()
