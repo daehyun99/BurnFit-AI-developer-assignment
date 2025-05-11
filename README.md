@@ -4,6 +4,7 @@
 - [Gemma3-1B 파인튜닝 모델(구글 드라이브)](https://drive.google.com/drive/folders/1-42plqywNzfa0OqLdnm_9D1PsBCms7jj?usp=sharing)
 - [학습용 데이터 샘플 (lora-training1)](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/data/sample-dataset/lora-training1.json)
 - [학습용 데이터 샘플 (lora-training2)](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/data/sample-dataset/lora-training2.json)
+- [FastAPI (Colab)](https://colab.research.google.com/drive/136btY15Ar3C2Rj-S_1jGkjuMCO38nFDt?usp=sharing)
 
 # 1. 프로젝트 개요
 - [BurnFit] AI 개발자 과제
@@ -105,6 +106,8 @@ pip install pandas openai scikit-learn matplotlib python-dotenv
 
 # /data의 .ipynb을 활용하여, 데이터 전치리 수행
 ```
+- 🛑 `gemma`라이브러리 로드가 필요한 경우 -> Colab 환경 실행 필요
+
 # 4. 사용한 라이브러리 및 환경 정보
 - 개발 환경
     - 데이터 전처리 및 모델 학습
