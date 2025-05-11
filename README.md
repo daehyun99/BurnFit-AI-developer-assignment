@@ -59,7 +59,10 @@ graph LR
 - 학습 방식 : Lora
 
 # 실행 방법
-- FastAPI 서버 실행: [Colab](https://colab.research.google.com/drive/136btY15Ar3C2Rj-S_1jGkjuMCO38nFDt?usp=sharing) (로컬 실행 시, `gemma`라이브러리에 의한 오류 발생)
+- FastAPI 서버 실행: [Colab](https://colab.research.google.com/drive/136btY15Ar3C2Rj-S_1jGkjuMCO38nFDt?usp=sharing)
+    - `Colab`환경에서 `ngrok` 서버 배포
+    - `ngrok` 서버 접속 및 `Readme.md` 하단의 **유저 입력 샘플** 입력
+    - 🛑 로컬 실행 시, `gemma`라이브러리에서 오류 발생 (반드시 Colab 환경 실행 필요)
 - Data 전처리 :
     - .env 파일 생성 및 입력
     ```sh
@@ -88,7 +91,7 @@ graph LR
     
 
 - 프로그래밍 언어
-    - Python
+    - Python = 3.11
 - 기술 스택
     - fastapi
     - gemma
@@ -106,3 +109,27 @@ graph LR
 - Data : 데이터 수집, 처리, 분석
 - Model : AI 모델 학습
 - Deploy : 배포 관련
+
+---
+## 예시 사용자 루틴 생성 결과
+- 샘플1
+```py
+{
+    "instruction": f"{instruction}",
+    "input": f"{input}"
+}
+```
+- 샘플2
+```py
+{
+    "instruction": f"{instruction}",
+    "input": f"{input}"
+}
+```
+- 샘플3
+```py
+{
+    "instruction": f"{instruction}",
+    "input": f"{input}"
+}
+```

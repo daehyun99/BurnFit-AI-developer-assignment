@@ -3,7 +3,7 @@ from gemma import gm
 from gemma import peft
 
 
-def load_Gemma3(path = "/content/drive/MyDrive/Gemma3-lora6"):
+def load_Gemma3(path = "/content/drive/MyDrive/05_[공유파일]/Burnfit-model/Gemma3-lora6"):
     """
     path 
     """
