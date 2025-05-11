@@ -72,12 +72,12 @@ graph LR
 
 # 3. 실행 방법
 ## 3-1. FastAPI 서버 실행: [FastAPI (Colab)](https://colab.research.google.com/drive/136btY15Ar3C2Rj-S_1jGkjuMCO38nFDt?usp=sharing)
-    - `Colab`환경에서 `ngrok` 서버 배포
-        1. `Colab` 파일 복사
-        2. Gemma3 모델 구글 드라이브에 업로드 필요
-        3. ngrok 토큰 입력 필요
-        4. `ngrok` 서버 접속 및 `docs/model_training.md`의 **3. 예시 사용자 루틴 생성**의 입력 데이터 활용
-    - 🛑 로컬 실행 시, `gemma`라이브러리에서 오류 발생 -> Colab 환경 실행 필요
+- `Colab`환경에서 `ngrok` 서버 배포
+    1. `Colab` 파일 복사
+    2. Gemma3 모델 구글 드라이브에 업로드 필요
+    3. ngrok 토큰 입력 필요
+    4. `ngrok` 서버 접속 및 `docs/model_training.md`의 **3. 예시 사용자 루틴 생성**의 입력 데이터 활용
+- 🛑 로컬 실행 시, `gemma`라이브러리에서 오류 발생 -> Colab 환경 실행 필요
 ### 예시 사용자 루틴 생성 결과
 - Request
 ![FastAPI-Request](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/images/FastAPI-Request.PNG)
@@ -86,21 +86,21 @@ graph LR
 ![FastAPI-Response](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/images/FastAPI-Response.PNG)
 
 ## 3-2. Data 전처리 : (/data/)
-    - .env 파일 생성 및 입력
-    ```sh
-    OPENAI_API_KEY=""
-    ```
-    - 가상환경 및 패키지 설정
-    ```py
-    # 가상환경 설정
-    conda create -n burnfit-data python=3.11
-    conda activate burnfit-data
+- .env 파일 생성 및 입력
+```sh
+OPENAI_API_KEY=""
+```
+- 가상환경 및 패키지 설정
+```py
+# 가상환경 설정
+conda create -n burnfit-data python=3.11
+conda activate burnfit-data
 
-    # 패키지 설치
-    pip install pandas openai scikit-learn matplotlib python-dotenv
+# 패키지 설치
+pip install pandas openai scikit-learn matplotlib python-dotenv
 
-    # /data의 .ipynb을 활용하여, 데이터 전치리 수행
-    ```
+# /data의 .ipynb을 활용하여, 데이터 전치리 수행
+```
 # 4. 사용한 라이브러리 및 환경 정보
 - 개발 환경
     - 데이터 전처리 및 모델 학습
