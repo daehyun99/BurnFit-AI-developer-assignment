@@ -1,13 +1,13 @@
 # README.md
 ### 주요 파일
-- [모델 학습 설명서](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/docs/model_training.md) (/docs/model_training.md)
+- [모델 학습 설명서](https://github.com/daehyun99/LLM-531-Workout-Recommender/blob/main/docs/model_training.md) (/docs/model_training.md)
 - [Gemma3-1B 파인튜닝 모델(구글 드라이브)](https://drive.google.com/drive/folders/1-42plqywNzfa0OqLdnm_9D1PsBCms7jj?usp=sharing)
-- [학습용 데이터 샘플 (lora-training1)](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/data/sample-dataset/lora-training1.json)
-- [학습용 데이터 샘플 (lora-training2)](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/data/sample-dataset/lora-training2.json)
+- [학습용 데이터 샘플 (lora-training1)](https://github.com/daehyun99/LLM-531-Workout-Recommender/blob/main/data/sample-dataset/lora-training1.json)
+- [학습용 데이터 샘플 (lora-training2)](https://github.com/daehyun99/LLM-531-Workout-Recommender/blob/main/data/sample-dataset/lora-training2.json)
 - [FastAPI (Colab)](https://colab.research.google.com/drive/136btY15Ar3C2Rj-S_1jGkjuMCO38nFDt?usp=sharing)
 
 # 1. 프로젝트 개요
-- [BurnFit] AI 개발자 과제
+- **AI 개발자 과제**
 - 프로젝트명 : LLM 기반 5/3/1 운동 루틴 추천 시스템
 - 프로젝트 수행 기간 : 2025-05-03 ~ 2025-05-12
 ```mermaid
@@ -40,7 +40,7 @@ graph LR
     ```
 
 ## 1-1. 프로젝트 관리 (Gantt chart)
-![Gantt chart](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/images/milesthone2.PNG)
+![Gantt chart](https://github.com/daehyun99/LLM-531-Workout-Recommender/blob/main/images/milesthone2.PNG)
 
 ## 1-2. 목표
 - 사용자의 운동 경험, 목표, 1RM 기록 등을 바탕으로, 5/3/1 프로그램 기반의 맞춤형 운동 루틴을 생성하는 시스템을 설계하고 구현합니다.
@@ -57,7 +57,7 @@ graph LR
 - 학습 및 추론은 **로컬 또는 클라우드 환경 모두 사용 가능**하며, 사용한 리소스를 문서에 명시해주세요.
 
 # 2. 모델 정보 및 학습 요약
-- [모델 학습 설명서](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/docs/model_training.md) (/docs/model_training.md)
+- [모델 학습 설명서](https://github.com/daehyun99/LLM-531-Workout-Recommender/blob/main/docs/model_training.md) (/docs/model_training.md)
 - 사용한 모델: `Gemma3-1B`
 - 학습 방식 : `LoRA`
 - 학습 환경: Google Colab, v2-8 TPU 사용
@@ -81,14 +81,14 @@ graph LR
     1. `Colab` 파일 복사
     2. Gemma3 모델 구글 드라이브에 업로드 필요 ([Gemma3-1B 파인튜닝 모델(구글 드라이브)](https://drive.google.com/drive/folders/1-42plqywNzfa0OqLdnm_9D1PsBCms7jj?usp=sharing))
     3. ngrok 토큰 입력 필요
-    4. `ngrok` 서버 접속 및 `docs/model_training.md`의 [**3. 예시 사용자 루틴 생성**](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/docs/model_training.md#3-%EC%98%88%EC%8B%9C-%EC%82%AC%EC%9A%A9%EC%9E%90-%EB%A3%A8%ED%8B%B4-%EC%83%9D%EC%84%B1-%EA%B2%B0%EA%B3%BC)의 입력 데이터 활용
+    4. `ngrok` 서버 접속 및 `docs/model_training.md`의 [**3. 예시 사용자 루틴 생성**](https://github.com/daehyun99/LLM-531-Workout-Recommender/blob/main/docs/model_training.md#3-%EC%98%88%EC%8B%9C-%EC%82%AC%EC%9A%A9%EC%9E%90-%EB%A3%A8%ED%8B%B4-%EC%83%9D%EC%84%B1-%EA%B2%B0%EA%B3%BC)의 입력 데이터 활용
 - 🛑 로컬 실행 시, `gemma`라이브러리에서 오류 발생 -> Colab 환경 실행 필요
 ### 사용자 루틴 생성 결과 (예시 이미지)
 - Request
-![FastAPI-Request](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/images/FastAPI-Request.PNG)
+![FastAPI-Request](https://github.com/daehyun99/LLM-531-Workout-Recommender/blob/main/images/FastAPI-Request.PNG)
 
 - Response
-![FastAPI-Response](https://github.com/daehyun99/BurnFit-AI-developer-assignment/blob/main/images/FastAPI-Response.PNG)
+![FastAPI-Response](https://github.com/daehyun99/LLM-531-Workout-Recommender/blob/main/images/FastAPI-Response.PNG)
 
 ## 3-2. Data 전처리 : (/data/[File-Name].ipynb)
 - .env 파일 생성 및 입력
@@ -98,8 +98,8 @@ OPENAI_API_KEY=""
 - 가상환경 및 패키지 설정
 ```py
 # 가상환경 설정
-conda create -n burnfit-data python=3.11
-conda activate burnfit-data
+conda create -n workout-data python=3.11
+conda activate workout-data
 
 # 패키지 설치
 pip install pandas openai scikit-learn matplotlib python-dotenv
